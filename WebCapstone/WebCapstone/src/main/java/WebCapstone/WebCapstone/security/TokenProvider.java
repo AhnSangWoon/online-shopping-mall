@@ -26,10 +26,6 @@ public class TokenProvider {
                 .signWith(SignatureAlgorithm.HS512, SECURITY_KEY)
                 .setSubject(id).setIssuedAt(new Date()).setExpiration(exprTime)
                 .compact();
-
-
-
-
     }
 
     //검증
