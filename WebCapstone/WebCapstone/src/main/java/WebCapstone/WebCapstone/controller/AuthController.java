@@ -2,7 +2,10 @@ package WebCapstone.WebCapstone.controller;
 
 import WebCapstone.WebCapstone.DTO.*;
 //import WebCapstone.WebCapstone.service.AuthService;
+import WebCapstone.WebCapstone.DTO.Upload_Order.UploadDTO;
+import WebCapstone.WebCapstone.DTO.Upload_Order.UploadResponseDTO;
 import WebCapstone.WebCapstone.service.AuthService;
+import WebCapstone.WebCapstone.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +31,14 @@ public class AuthController {
     public ResponseDTO<SignInResponseDTO> signIn(@RequestBody SignInDTO requestBody){
         System.out.println(requestBody.toString());
         ResponseDTO<SignInResponseDTO> result = authService.signIn(requestBody);
+        return result;
+
+    }
+
+    @PostMapping("/Upload") // 업로드 기능
+    public ResponseDTO<UploadResponseDTO> Upload(@RequestBody UploadDTO requestBody){
+        System.out.println(requestBody.toString());
+        ResponseDTO<UploadResponseDTO> result = UploadService.Upload(requestBody);
         return result;
 
     }

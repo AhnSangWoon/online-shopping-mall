@@ -21,8 +21,9 @@ public class AuthService {
 
     @Autowired TokenProvider tokenProvider;
 
-    @Autowired
-    JwtAuthencationFilter jwtAuthencationFilter;
+    /*@Autowired
+    JwtAuthencationFilter jwtAuthencationFilter;*/
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
 
@@ -37,7 +38,7 @@ public class AuthService {
         return true;
     }
 
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public ResponseDTO<?> signUp(SignupDTO dto){
         String Id = dto.getId();
         String Pwd = dto.getPwd();
