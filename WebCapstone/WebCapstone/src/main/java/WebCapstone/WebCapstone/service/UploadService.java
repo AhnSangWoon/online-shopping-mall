@@ -22,24 +22,35 @@ public class UploadService {
     TokenProvider tokenProvider;
 
     public ResponseDTO<UploadResponseDTO> Upload(UploadDTO dto){
-        String memberId = dto.getMemberId();
-        Category category = dto.getCategory();
-        String itemName = dto.getItemName();
-        String main_text = dto.getMain_text();
+        String memberid = dto.getMemberid();
+        String category = dto.getCategory();
+        String itemname = dto.getItemname();
+        String maintext = dto.getMaintext();
         String title = dto.getTitle();
-        int itemPrice = dto.getItemPrice();
+        int itemprice = dto.getItemprice();
+        int itemid = 1;
+
 
         try{
-            if(category.equals("clothes")==false && category.equals("job")==false){
-                return ResponseDTO.setFailed("카테고리는 clothes, job중 하나를 선택해주세요");
+            while(uploadRepository.findByitemid(itemid)!=null){
+                itemid++;
             }
-            if(memberId.equals(null)==true){
-                return ResponseDTO.setFailed("아이디 값이 필요합니다.");
-            }
-            if(itemName.equals(null)==true){
+            dto.setItemid(itemid);
+            //upload = uploadRepository.findByid(itemid);
+
+        }catch(Exception e){
+            return ResponseDTO.setFailed("업로드한 상품의 고유코드에 문제가 생겼습니다.");
+        }
+
+        System.out.println(dto.toString());
+
+
+        try{
+            //upload = uploadRepository.findByid(itemid);
+            if(itemname.equals(null)==true){
                 return ResponseDTO.setFailed("상품의 이름을 입력해주세요");
             }
-            if(itemName.equals(null)==true){
+            if(itemname.equals(null)==true){
                 return ResponseDTO.setFailed("상품의 이름을 입력해주세요");
             }
         }catch(Exception e){
@@ -49,14 +60,14 @@ public class UploadService {
         if(title.equals(null)==true){
             dto.setTitle("제목없음");
         }
-        if(main_text.equals(null)==true){
-            dto.setMain_text(" ");
+        if(maintext.equals(null)==true){
+            dto.setMaintext(" ");
         }
 
         Upload upload = new Upload(dto);
         System.out.println("ok");
 
-        //비밀번호 암호화
+
         try{
             uploadRepository.save(upload);
         }catch(Exception e){

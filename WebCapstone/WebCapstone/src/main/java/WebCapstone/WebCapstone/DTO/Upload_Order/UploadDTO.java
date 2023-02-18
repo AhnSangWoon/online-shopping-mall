@@ -11,45 +11,45 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UploadDTO {
-    private String MemberId;
-    private Category category;
-    private String itemName;
-    private String itemId;
+    private String memberid;
+    private String category;
+    private String itemname;
+    private int itemid;
 
     private String title;//게시글 제목
-    private String main_text;//게시글 본문
-    private int itemPrice;
+    private String maintext;//게시글 본문
+    private int itemprice;
 
-    public String getMemberId() {
-        return MemberId;
+    public String getMemberid() {
+        return memberid;
     }
 
-    public void setMemberId(String memberId) {
-        MemberId = memberId;
+    public void setMemberid(String memberid) {
+        this.memberid = memberid;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getItemname() {
+        return itemname;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
     }
 
-    public String getItemId() {
-        return itemId;
+    public int getItemid() {
+        return itemid;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setItemid(int itemid) {
+        this.itemid = itemid;
     }
 
     public String getTitle() {
@@ -60,19 +60,19 @@ public class UploadDTO {
         this.title = title;
     }
 
-    public String getMain_text() {
-        return main_text;
+    public String getMaintext() {
+        return maintext;
     }
 
-    public void setMain_text(String main_text) {
-        this.main_text = main_text;
+    public void setMaintext(String maintext) {
+        this.maintext = maintext;
     }
 
-    public int getItemPrice() {
-        return itemPrice;
+    public int getItemprice() {
+        return itemprice;
     }
 
-    public void setItemPrice(int itemPrice) {
-        this.itemPrice = itemPrice;
+    public void setItemprice(int itemprice) {
+        this.itemprice = itemprice;
     }
 }

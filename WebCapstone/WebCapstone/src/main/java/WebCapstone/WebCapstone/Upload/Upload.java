@@ -18,23 +18,25 @@ import lombok.NoArgsConstructor;
 @Entity(name="upload")
 @Table(name ="upload")
 public class Upload {
-    private String MemberId;
-    private Category category;
-    private String itemName;
+    private String memberid;
+    private String category;
+
+    private String itemname;
+
     @Id
-    private String itemId;
+    private int itemid;
     private String title;//게시글 제목
-    private String main_text;//게시글 본문
-    private int itemPrice;
+    private String maintext;//게시글 본문
+    private int itemprice;
 
     public Upload(UploadDTO dto){
-        this.MemberId = dto.getMemberId();
+        this.memberid = dto.getMemberid();
         this.category = dto.getCategory();
-        this.itemName = dto.getItemName();
-        this.itemId = dto.getItemId();
+        this.itemname = dto.getItemname();
+        this.itemid = dto.getItemid();
         this.title = dto.getTitle();
-        this.main_text = dto.getMain_text();
-        this.itemPrice = dto.getItemPrice();
+        this.maintext = dto.getMaintext();
+        this.itemprice = dto.getItemprice();
 
     }
 
