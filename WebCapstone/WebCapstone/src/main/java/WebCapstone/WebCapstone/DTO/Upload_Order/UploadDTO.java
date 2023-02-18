@@ -14,6 +14,8 @@ public class UploadDTO {
     private String MemberId;
     private Category category;
     private String itemName;
+    private String itemId;
+
     private String title;//게시글 제목
     private String main_text;//게시글 본문
     private int itemPrice;
@@ -40,6 +42,14 @@ public class UploadDTO {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getTitle() {

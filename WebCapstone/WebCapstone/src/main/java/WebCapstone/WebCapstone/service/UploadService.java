@@ -2,6 +2,7 @@ package WebCapstone.WebCapstone.service;
 
 import WebCapstone.WebCapstone.DTO.ResponseDTO;
 import WebCapstone.WebCapstone.DTO.Upload_Order.UploadDTO;
+import WebCapstone.WebCapstone.DTO.Upload_Order.UploadResponseDTO;
 import WebCapstone.WebCapstone.Upload.Category;
 import WebCapstone.WebCapstone.Upload.Upload;
 import WebCapstone.WebCapstone.entity.MemberEntity;
@@ -9,7 +10,9 @@ import WebCapstone.WebCapstone.repository.MemberRepository;
 import WebCapstone.WebCapstone.repository.UploadRepository;
 import WebCapstone.WebCapstone.security.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UploadService {
 
     @Autowired
@@ -18,7 +21,7 @@ public class UploadService {
     @Autowired
     TokenProvider tokenProvider;
 
-    public ResponseDTO<?> Upload(UploadDTO dto){
+    public ResponseDTO<UploadResponseDTO> Upload(UploadDTO dto){
         String memberId = dto.getMemberId();
         Category category = dto.getCategory();
         String itemName = dto.getItemName();
@@ -63,6 +66,6 @@ public class UploadService {
 
 
 
-        return ResponseDTO.setSuccess("Signup success", null);
+        return ResponseDTO.setSuccess("상품이 업로드 되었습니다.", null);
     }
 }

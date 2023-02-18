@@ -18,6 +18,8 @@ public class AuthController {
 
     @Autowired
     AuthService authService;
+    @Autowired
+    UploadService uploadService;
 
     @PostMapping("/signUp") // 회원가입 기능(추후에 구현)
     public ResponseDTO<?> signUp(@RequestBody SignupDTO requestBody){
@@ -38,7 +40,7 @@ public class AuthController {
     @PostMapping("/Upload") // 업로드 기능
     public ResponseDTO<UploadResponseDTO> Upload(@RequestBody UploadDTO requestBody){
         System.out.println(requestBody.toString());
-        ResponseDTO<UploadResponseDTO> result = UploadService.Upload(requestBody);
+        ResponseDTO<UploadResponseDTO> result = uploadService.Upload(requestBody);
         return result;
 
     }

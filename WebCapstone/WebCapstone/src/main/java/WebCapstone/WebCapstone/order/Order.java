@@ -2,6 +2,7 @@ package WebCapstone.WebCapstone.order;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Table(name ="Order")
 public class Order {
 
+    @Id
     private String MemberId;
     private String itemName;
     private int itemPrice;
