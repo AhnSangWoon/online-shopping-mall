@@ -5,6 +5,7 @@ import WebCapstone.WebCapstone.DTO.*;
 import WebCapstone.WebCapstone.DTO.Upload_Order.UploadDTO;
 import WebCapstone.WebCapstone.DTO.Upload_Order.UploadResponseDTO;
 import WebCapstone.WebCapstone.service.AuthService;
+import WebCapstone.WebCapstone.service.ShowUploadService;
 import WebCapstone.WebCapstone.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class AuthController {
     AuthService authService;
     @Autowired
     UploadService uploadService;
+
+    @Autowired
+    ShowUploadService showUploadService;
 
     @PostMapping("/signUp") // 회원가입 기능(추후에 구현)
     public ResponseDTO<?> signUp(@RequestBody SignupDTO requestBody){
@@ -41,6 +45,14 @@ public class AuthController {
     public ResponseDTO<UploadResponseDTO> Upload(@RequestBody UploadDTO requestBody){
         System.out.println(requestBody.toString());
         ResponseDTO<UploadResponseDTO> result = uploadService.Upload(requestBody);
+        return result;
+
+    }
+
+    @GetMapping("/UploadShow")// 업로드 기능
+    public ResponseDTO<UploadResponseDTO> ShowUpload(){
+        System.out.println("메인페이지 업로드 요청");
+        ResponseDTO<UploadResponseDTO> result = showUploadService.ShowUpload();
         return result;
 
     }
