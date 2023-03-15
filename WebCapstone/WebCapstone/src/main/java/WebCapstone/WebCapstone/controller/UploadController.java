@@ -45,7 +45,7 @@ public class UploadController {
         String URL = awsS3Service.uploadFile(files);
         UploadDTO uploadDTO = UploadDTO.builder().memberid(memberid).category(category)
                         .itemname(itemname).itemid(Integer.parseInt(itemid)).title(title).maintext(maintext)
-                        .itemprice(Integer.parseInt(itemprice)).URL(URL).build();
+                        .itemprice(Integer.parseInt(itemprice)).detailcategory(detailcategory).URL(URL).build();
         ResponseDTO<UploadResponseDTO> result = uploadService.Upload(uploadDTO);
         return result;
 
