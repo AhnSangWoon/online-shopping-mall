@@ -18,11 +18,12 @@ public class UploadDTO {
     private String title;//게시글 제목
     private String maintext;//게시글 본문
     private int itemprice;
+    private String detailcategory;
 
     private String URL;
 
     @Builder
-    public UploadDTO(String memberid, String category, String itemname, int itemid, String title, String maintext, int itemprice, String URL){
+    public UploadDTO(String memberid, String category, String itemname, int itemid, String title, String maintext, int itemprice, String detailcategory, String URL){
         this.memberid = memberid;
         this.category = category;
         this.itemname = itemname;
@@ -30,6 +31,7 @@ public class UploadDTO {
         this.title = title;
         this.maintext = maintext;
         this.itemprice = itemprice;
+        this.detailcategory = detailcategory;
         this.URL = URL;
     }
 

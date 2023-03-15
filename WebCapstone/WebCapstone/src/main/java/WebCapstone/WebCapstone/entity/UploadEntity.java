@@ -29,6 +29,7 @@ public class UploadEntity {
     private String title;//게시글 제목
     private String maintext;//게시글 본문
     private int itemprice;
+    private String detailcategory;
 
     private String URL;
 
@@ -40,6 +41,7 @@ public class UploadEntity {
         this.title = dto.getTitle();
         this.maintext = dto.getMaintext();
         this.itemprice = dto.getItemprice();
+        this.detailcategory = dto.getDetailcategory();
         this.URL = dto.getURL();
 
     }

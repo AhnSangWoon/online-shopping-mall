@@ -40,7 +40,8 @@ public class UploadController {
             , @RequestParam(value="itemid", required=false) String itemid
             , @RequestParam(value="title", required=false) String title
             , @RequestParam(value="maintext", required=false) String maintext
-            , @RequestParam(value="itemprice", required=false) String itemprice) throws IOException {
+            , @RequestParam(value="itemprice", required=false) String itemprice
+            ,@RequestParam(value="detailcategory", required=false)String detailcategory) throws IOException {
         String URL = awsS3Service.uploadFile(files);
         UploadDTO uploadDTO = UploadDTO.builder().memberid(memberid).category(category)
                         .itemname(itemname).itemid(Integer.parseInt(itemid)).title(title).maintext(maintext)
