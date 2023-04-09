@@ -10,7 +10,10 @@ import WebCapstone.WebCapstone.service.ChatService;
 import WebCapstone.WebCapstone.service.ShowUploadService;
 import WebCapstone.WebCapstone.service.UploadService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,7 +52,8 @@ public class UploadController {
             , @RequestParam(value="title", required=false) String title
             , @RequestParam(value="maintext", required=false) String maintext
             , @RequestParam(value="itemprice", required=false) String itemprice
-            ,@RequestParam(value="detailcategory", required=false)String detailcategory) throws IOException {
+            , @RequestParam(value="detailcategory", required=false)String detailcategory
+            ,@RequestParam(value="purpose", required=false) String purpose) throws IOException {
         String URL = awsS3Service.uploadFile(files);
 
         StringBuffer stringBuffer = new StringBuffer();
@@ -59,7 +63,17 @@ public class UploadController {
         simpleDateFormat.format(now, stringBuffer, new FieldPosition(0));
         UploadDTO uploadDTO = UploadDTO.builder().memberid(memberid).category(category)
                         .itemname(itemname).itemid(Integer.parseInt(itemid)).title(title).maintext(maintext)
-                        .itemprice(Integer.parseInt(itemprice)).detailcategory(detailcategory).URL(URL).view(0).favor(0).uploadtime(stringBuffer.toString()).build();
+                        .itemprice(Integer.parseInt(itemprice)).detailcategory(detailcategory).purpose(purpose).URL(URL).view(0).favor(0).uploadtime(stringBuffer.toString()).build();
+
+        /*if(bindingResult.hasErrors()) {//데이터검증
+            System.out.println("Form data has some errors");
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            for(ObjectError error:errors) {
+                System.out.println(error.getDefaultMessage());
+            }
+            return ResponseDTO.setFailed("빈칸에 올바른 값을 입력해주세요");
+        }*/
+
         ResponseDTO<UploadResponseDTO> result = uploadService.Upload(uploadDTO);
         return result;
 

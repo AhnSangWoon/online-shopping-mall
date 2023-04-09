@@ -43,6 +43,7 @@ public class ShowUploadService {
                     .view(uploadEntities.get(i).getView())
                     .favor(uploadEntities.get(i).getFavor())
                     .uploadtime(uploadEntities.get(i).getUploadtime())
+                    .purpose(uploadEntities.get(i).getPurpose())
                     .build();
             uploadDTOS.add(uploadDTO);
         }
@@ -73,6 +74,7 @@ public class ShowUploadService {
                     .favor(uploadEntity.getFavor())
                     .uploadtime(uploadEntity.getUploadtime())
                     .favorcheck(favorcheck)
+                    .purpose(uploadEntity.getPurpose())
                     .build();
             return uploadDTO;
         }

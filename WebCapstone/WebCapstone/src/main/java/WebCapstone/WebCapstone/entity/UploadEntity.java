@@ -39,6 +39,7 @@ public class UploadEntity {
     private String uploadtime;
 
     private String detailcategory;
+    private String purpose;
 
     public UploadEntity(UploadDTO dto){
         this.memberid = dto.getMemberid();
@@ -53,6 +54,7 @@ public class UploadEntity {
         this.favor = dto.getFavor();
         this.uploadtime = dto.getUploadtime();
         this.detailcategory = dto.getDetailcategory();
+        this.purpose = dto.getPurpose();
     }
 
 }
